@@ -1,0 +1,7 @@
+Implemente os algoritmos sugeridos a seguir:
+
+Exercício 1. A partir de dados de um grafo não direcionado, lidos pelo usuário ou inicializados no algoritmo. Escreva uma função para eliminar possíveis ciclos.
+
+Exercício 2. A partir de dados de um grafo não direcionado, lidos pelo usuário ou inicializados no algoritmo. Escreva uma função para eliminar nós isolados.
+
+Exercício 3. A partir de dados de um grafo não direcionado, lidos pelo usuário ou inicializados no algoritmo. Escreva um algoritmo para listar o grafo complementar G.
