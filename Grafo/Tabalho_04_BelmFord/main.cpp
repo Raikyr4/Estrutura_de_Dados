@@ -18,12 +18,14 @@ public:
     vector<Aresta> arestas;
 };
 
-void BellmanFord(Grafo &g, int v)
+bool BellmanFord(Grafo &g, int v)
 {
     vector<int> dist(g.vertices.size(), INT32_MAX);
+
+    //seta a distância da origem para 0
     dist[v] = 0;
 
-
+    // percorre todas as arestas do grafo. Para cada aresta, ele verifica se a distância do vértice de origem até o vértice v pode ser encurtada ao passar por essa aresta. Se puder, ele atualiza a distância
     for (int i = 1; i <= g.vertices.size() - 1; i++)
     {
         for (auto x : g.arestas)
@@ -31,6 +33,7 @@ void BellmanFord(Grafo &g, int v)
             int u = x.v1;
             int v = x.v2;
             int peso = x.peso;
+            //  verifica se a distância atual do vértice de origem u até o vértice v pode ser encurtada ao passar por esta aresta.
             if (dist[u] != INT32_MAX && dist[u] + peso < dist[v])
             {
                 dist[v] = dist[u] + peso;
@@ -44,13 +47,22 @@ void BellmanFord(Grafo &g, int v)
         int u = x.v1;
         int v = x.v2;
         int peso = x.peso;
+        // se diminui é pq tem um ciclo negativo
         if (dist[u] != INT32_MAX && dist[u] + peso < dist[v])
+        {
             cout << "O grafo contem um ciclo de peso negativo" << endl;
+            return false;
+        }
+
     }
 
     // Mostrando a MST através das distancias mínimas do vértice de partida até cada vértice restante do grafo
     for (int i = 0; i < g.vertices.size(); i++)
+    {
         cout << "Distancia do vertice " << v << " ao vertice " << i << ": " << dist[i] << endl;
+    }
+
+    return true;
 }
 
 int main()
